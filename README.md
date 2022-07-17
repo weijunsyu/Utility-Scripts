@@ -1,6 +1,6 @@
 # Utility Scripts
 
-Collection of scripts for performing utility tasks. Mostly CLI programs primarily targeted at for Windows OS.
+Collection of scripts for performing utility tasks. Mostly CLI programs primarily targeted at Windows OS.
 
 1. **IterativeFileCopy**  
 Copy files from all source directories such that files in the destination are numbered in consecutive order. Options for new filename can be set by the user. Files and directories are sorted by name, ignoring any non-numeric characters. Shallow copy only such that subdirectories will not be traversed.
