@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) [DATE OF PUBLICATION] [NAME OF OWNER]
+# Copyright (c) 2022 WeiJun Syu
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
