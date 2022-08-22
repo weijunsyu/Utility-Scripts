@@ -148,9 +148,9 @@ if __name__ == "__main__":
 
     elif not IsValidDirectory(args.bulk):
         if args.verbose:
-            print("The destination path: '" + args.bulk + "'" + " is an invalid directory.")
+            print("The source path: '" + args.bulk + "'" + " is an invalid directory.")
         elif not args.quiet:
-            print("Destination path is invalid.")
+            print("The source path is invalid.")
         sys.exit()
 
     if not IsValidDirectory(args.dest):
