@@ -44,6 +44,9 @@ def IsLinux():
         return True
     return False
 
+def NormalizePath(path):
+    return os.path.normpath(path)
+
 def IsValidDirectory(path):
     return os.path.isdir(path)
 
@@ -218,6 +221,9 @@ if __name__ == "__main__":
         if not args.quiet:
             input("Please choose at least one option to perform. [-m | -c | -i | -s | -a | -y]")
         sys.exit()
+
+    args.source = NormalizePath(args.source)
+    args.dest = NormalizePath(args.dest)
 
     if not IsValidDirectory(args.source):
         if args.verbose:

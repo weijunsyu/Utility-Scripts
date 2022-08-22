@@ -25,11 +25,14 @@ import os
 import argparse
 
 
+def NormalizePath(path):
+    return os.path.normpath(path)
+
 def IsValidDirectory(path):
     return os.path.isdir(path)
 
 def GetImmediateDirectory(directoryPath):
-    return os.path.basename(os.path.normpath(directoryPath))
+    return os.path.basename(directoryPath)
 
 def SplitFilepath(filepath):
     dir, name_ext = os.path.split(filepath)
@@ -58,7 +61,7 @@ def DoRename(sourceList, initial, counter, prefix, suffix, keep=False, shallow=T
         pathlist = GetPathList(source, directory=False, shallow=shallow)
         for path in pathlist:
             dir, name, ext = SplitFilepath(path)
-            
+
             newName = GetImmediateDirectory(dir)
             if keep:
                 newName = name + " " + newName
@@ -80,7 +83,7 @@ def DoRename(sourceList, initial, counter, prefix, suffix, keep=False, shallow=T
 
 def DoBulkRename(source, initial, counter, prefix, suffix, keep=False, shallow=True, verbose=False, quiet=False):
     if not quiet:
-        print("Now renaming subdirectories in: '" + source + "'")
+        print("Now renaming files found within the subdirectories of: '" + source + "'")
     dirList = GetPathList(source, directory=True, shallow=True)
     if verbose:
         print("The list of subdirectories are as follows:")
@@ -104,6 +107,11 @@ if __name__ == "__main__":
     logGroup.add_argument("-q", "--quiet", action="store_true", help="Suppress ouptut to the console.")
 
     args = parser.parse_args()
+
+    if args.source:
+        args.source = NormalizePath(args.source)
+    if args.bulk:
+        args.bulk = NormalizePath(args.bulk)
 
     if args.source:
         quitFlag = False

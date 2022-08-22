@@ -27,6 +27,9 @@ import shutil
 import math
 
 
+def NormalizePath(path):
+    return os.path.normpath(path)
+
 def IsValidDirectory(path):
     return os.path.isdir(path)
 
@@ -130,6 +133,12 @@ if __name__ == "__main__":
     logGroup.add_argument("-q", "--quiet", action="store_true", help="Suppress ouptut to the console.")
 
     args = parser.parse_args()
+
+    args.dest = NormalizePath(args.dest)
+    if args.source:
+        args.source = NormalizePath(args.source)
+    if args.bulk:
+        args.bulk = NormalizePath(args.bulk)
 
     if args.source:
         quitFlag = False
